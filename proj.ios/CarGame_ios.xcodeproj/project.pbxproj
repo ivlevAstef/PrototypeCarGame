@@ -24,9 +24,10 @@
 		3A631A475DE035FC53ADE5EA /* res.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7F3B12E3C9D554D9FE28101D /* res.xml */; };
 		848FA60A1C59EE5300073A5E /* liboxygine_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 848FA5FD1C59E8F200073A5E /* liboxygine_ios.a */; };
 		848FA60B1C59EE5300073A5E /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 848FA6031C59E8F200073A5E /* libSDL2.a */; };
+		848FA60E1C59F3DD00073A5E /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 848FA60C1C59F3DD00073A5E /* Application.cpp */; };
+		848FA6111C59F49600073A5E /* ExampleMainActor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 848FA60F1C59F49600073A5E /* ExampleMainActor.cpp */; };
 		9223FE7F1C2D913D000B1FDA /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9223FE7E1C2D913D000B1FDA /* GameController.framework */; };
 		C8860D93875589970329DCCD /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 4DA100C319512824B7570663 /* fonts */; };
-		DA49ED8903C628BA578C8670 /* example.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BF9628FC8D38F9748F0CDEB /* example.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,12 +85,14 @@
 		04998EF617F8B6F3003441C3 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjpeg.a; path = "../oxygine-framework//oxygine/third_party/ios/libraries/libjpeg.a"; sourceTree = "<group>"; };
 		04E9AD3E1876FE84006A7317 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CarGame/Images.xcassets; sourceTree = "<group>"; };
 		04FE4D4FB640E0DF92DFB865 /* images */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = images; path = ../data/images; sourceTree = "<group>"; };
-		0BF9628FC8D38F9748F0CDEB /* example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = example.cpp; path = ../src/example.cpp; sourceTree = "<group>"; };
 		360377333740D8A2FD15BBE6 /* entry_point.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = entry_point.cpp; path = ../src/entry_point.cpp; sourceTree = "<group>"; };
 		4DA100C319512824B7570663 /* fonts */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = fonts; path = ../data/fonts; sourceTree = "<group>"; };
 		7F3B12E3C9D554D9FE28101D /* res.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wtf; name = res.xml; path = ../data/res.xml; sourceTree = "<group>"; };
+		848FA60C1C59F3DD00073A5E /* Application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Application.cpp; path = ../src/Application.cpp; sourceTree = "<group>"; };
+		848FA60D1C59F3DD00073A5E /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Application.h; path = ../src/Application.h; sourceTree = "<group>"; };
+		848FA60F1C59F49600073A5E /* ExampleMainActor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ExampleMainActor.cpp; path = ../src/ExampleMainActor.cpp; sourceTree = "<group>"; };
+		848FA6101C59F49600073A5E /* ExampleMainActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExampleMainActor.h; path = ../src/ExampleMainActor.h; sourceTree = "<group>"; };
 		9223FE7E1C2D913D000B1FDA /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
-		F6123B1E6FE4471A00F49751 /* example.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = example.h; path = ../src/example.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,8 +179,10 @@
 			isa = PBXGroup;
 			children = (
 				360377333740D8A2FD15BBE6 /* entry_point.cpp */,
-				0BF9628FC8D38F9748F0CDEB /* example.cpp */,
-				F6123B1E6FE4471A00F49751 /* example.h */,
+				848FA60C1C59F3DD00073A5E /* Application.cpp */,
+				848FA60D1C59F3DD00073A5E /* Application.h */,
+				848FA60F1C59F49600073A5E /* ExampleMainActor.cpp */,
+				848FA6101C59F49600073A5E /* ExampleMainActor.h */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -306,7 +311,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DC477AC10D6C07B3FE008F6 /* entry_point.cpp in Sources */,
-				DA49ED8903C628BA578C8670 /* example.cpp in Sources */,
+				848FA60E1C59F3DD00073A5E /* Application.cpp in Sources */,
+				848FA6111C59F49600073A5E /* ExampleMainActor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
