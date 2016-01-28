@@ -1,11 +1,11 @@
-/**
-Attention!
-This file has Oxygine initialization stuff.
-If you just started you don't need to understand it exactly you could check it
-later.
-You could start from example.cpp and example.h it has main functions being
-called from there
-*/
+//
+// File: entryPoint.cpp
+// Description:
+// Author: Ivlev Alexander. Stef
+// Created: 12:55 28/01/2016
+// Copyright (c) SIA 2016. All Right Reserved.
+//
+
 #include "DebugActor.h"
 #include "Stage.h"
 #include "core/oxygine.h"
@@ -61,7 +61,7 @@ static void desctruct() {
 static void run() {
   init();
 
-  Application *app = new Application();
+  Application* app = new Application();
 
   bool done = false;
   do {
@@ -79,7 +79,7 @@ static void run() {
 #include "SDL_main.h"
 extern "C" {
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
   run();
   return 0;
 }

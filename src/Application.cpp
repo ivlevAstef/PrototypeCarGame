@@ -1,9 +1,9 @@
 //
-//  Application.cpp
-//  CarGame_ios
-//
-//  Created by Alexander.Ivlev on 1/28/16.
-//  Copyright © 2016 Mac. All rights reserved.
+// File: Application.cpp
+// Description:
+// Author: Ivlev Alexander. Stef
+// Created: 13:00 28/01/2016
+// Copyright (c) SIA 2016. All Right Reserved.
 //
 
 #include "Application.h"
@@ -12,11 +12,47 @@
 using namespace oxygine;
 
 Application::Application() {
-  ExampleMainActor *mainActor = new ExampleMainActor();
+  SIALogDebug("Application Validate State.");
+  validateCurrentState();
+
+  SIALogDebug("Application PreInit.");
+  initModule();
+
+  SIALogDebug("Application Init.");
+  createMainScene();
+
+  SIALogDebug("Application Init Success.");
+}
+
+Application::~Application() {
+  SIALogDebug("Application Destruct.");
+  destroyMainScene();
+
+  SIALogDebug("Application Destruct Success.");
+}
+
+void Application::update() {
+  SIALogTrace("Application update.");
+
+  validateCurrentState();
+}
+
+void Application::initModule() {
+}
+
+void Application::validateCurrentState() {
+  SIAAssert(getStage());
+}
+
+void Application::createMainScene() {
+  ExampleMainActor* mainActor = new ExampleMainActor();
   mainActor->setName("MAIN_ACTOR");
   getStage()->addChild(mainActor);
 }
 
-Application::~Application() { getStage()->getChild("MAIN_ACTOR")->detach(); }
+void Application::destroyMainScene() {
+  ExampleMainActor* mainActor = getStage()->getChildT<ExampleMainActor>("MAIN_ACTOR");
+  SIAAssert(nullptr != mainActor);
 
-void Application::update() {}
+  mainActor->detach();
+}

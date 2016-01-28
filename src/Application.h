@@ -1,20 +1,28 @@
 //
-//  Application.h
-//  CarGame_ios
-//
-//  Created by Alexander.Ivlev on 1/28/16.
-//  Copyright © 2016 Mac. All rights reserved.
+// File: Application.h
+// Description:
+// Author: Ivlev Alexander. Stef
+// Created: 13:00 28/01/2016
+// Copyright (c) SIA 2016. All Right Reserved.
 //
 
-#ifndef SIA_APPLICATION_H_
-#define SIA_APPLICATION_H_
+#pragma once
+#ifndef SIA_CAR_GAME_APPLICATION_H_
+#define SIA_CAR_GAME_APPLICATION_H_
 
 class Application {
-public:
+ public:
   Application();
   ~Application();
 
   void update();
+
+ private:
+  void validateCurrentState();
+  void initModule();
+
+  void createMainScene();
+  void destroyMainScene();
 };
 
-#endif /* SIA_APPLICATION_H_ */
+#endif /* SIA_CAR_GAME_APPLICATION_H_ */

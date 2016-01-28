@@ -1,7 +1,7 @@
 BasedOnStyle: Chromium
 AlignTrailingComments: true
 AllowAllParametersOfDeclarationOnNextLine: false
-AllowShortFunctionsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: false
 AllowShortIfStatementsOnASingleLine: false
 AllowShortLoopsOnASingleLine: false
 BinPackParameters : false
@@ -13,10 +13,10 @@ IndentWidth: 2
 MaxEmptyLinesToKeep : 2
 BreakBeforeTernaryOperators : true
 PointerBindsToType : true
-ObjCSpaceAfterProperty: true
-ObjCSpaceBeforeProtocolList: true
 SpaceBeforeAssignmentOperators: true
 SpaceBeforeParens: ControlStatements
 SpacesInCStyleCastParentheses: false
+Language : Cpp
+Standard: Cpp11
 TabWidth: 2
 UseTab: Never

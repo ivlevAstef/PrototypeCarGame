@@ -1,13 +1,13 @@
 //
-//  ExampleMainActor.cpp
-//  CarGame_ios
-//
-//  Created by Alexander.Ivlev on 1/28/16.
-//  Copyright © 2016 Mac. All rights reserved.
+// File: ExampleMainActor.cpp
+// Description:
+// Author: Ivlev Alexander. Stef
+// Created: 13:05 28/01/2016
+// Copyright (c) SIA 2016. All Right Reserved.
 //
 
-#include "ExampleMainActor.h"
 #include <functional>
+#include "ExampleMainActor.h"
 
 using namespace oxygine;
 
@@ -22,7 +22,7 @@ ExampleMainActor::ExampleMainActor() {
   button->setPosition(pos);
 
   button->addEventListener(TouchEvent::CLICK,
-                           [this](Event *e) -> void { buttonClicked(e); });
+                           [this](Event* e) -> void { buttonClicked(e); });
 
   // attach button as child to current actor
   addChild(button);
@@ -51,9 +51,11 @@ ExampleMainActor::ExampleMainActor() {
   m_text = text;
 }
 
-ExampleMainActor::~ExampleMainActor() { m_resources.free(); }
+ExampleMainActor::~ExampleMainActor() {
+  m_resources.free();
+}
 
-void ExampleMainActor::buttonClicked(Event *event) {
+void ExampleMainActor::buttonClicked(Event* event) {
   // user clicked to button
 
   // animate button by chaning color
@@ -75,11 +77,11 @@ void ExampleMainActor::runSprite() {
   spSprite sprite = new Sprite();
   addChild(sprite);
 
-  int duration = 500; // 500 ms
-  int loops = -1;     // infinity loops
+  int duration = 500;  // 500 ms
+  int loops = -1;      // infinity loops
 
   // animation has 7 columns, check 'res.xml'
-  ResAnim *animation = m_resources.getResAnim("anim");
+  ResAnim* animation = m_resources.getResAnim("anim");
 
   // add animation tween to sprite
   // TweenAnim would change animation frames
