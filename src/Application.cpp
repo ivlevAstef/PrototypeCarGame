@@ -8,6 +8,7 @@
 
 #include "Application.h"
 #include "ExampleMainActor.h"
+#include "TestScene.h"
 
 using namespace oxygine;
 
@@ -45,13 +46,13 @@ void Application::validateCurrentState() {
 }
 
 void Application::createMainScene() {
-  ExampleMainActor* mainActor = new ExampleMainActor();
+  Actor* mainActor = new TestScene();
   mainActor->setName("MAIN_ACTOR");
   getStage()->addChild(mainActor);
 }
 
 void Application::destroyMainScene() {
-  ExampleMainActor* mainActor = getStage()->getChildT<ExampleMainActor>("MAIN_ACTOR");
+  Actor* mainActor = getStage()->getChildT<Actor>("MAIN_ACTOR");
   SIAAssert(nullptr != mainActor);
 
   mainActor->detach();

@@ -11,5 +11,6 @@
 #define _PREDEFINES_H_
 
 #include "Common/Logger/SIALogger.h"
+#include "Common/SIAMacros.h"
 
 #endif /* _PREDEFINES_H_ */
