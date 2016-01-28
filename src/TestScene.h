@@ -11,6 +11,7 @@
 #define TEST_SCENE_H_
 
 #include <map>
+#include "Models/Car.h"
 #include "oxygine-framework.h"
 
 class TestScene : public oxygine::Actor {
@@ -34,10 +35,8 @@ class TestScene : public oxygine::Actor {
   std::map<oxygine::pointer_index, oxygine::Vector2> m_touchPositions;
 
   oxygine::Resources m_resources;
-  oxygine::spSprite m_car;
-
-  double m_enginePower;
-  double m_wheelTurn;
+  oxygine::spSprite m_viewCar;
+  Models::Car m_modelCar;
 };
 
 #endif /* TEST_SCENE_H_ */

@@ -6,11 +6,15 @@
 // Copyright (c) SIA 2016. All Right Reserved.
 //
 
+
 #include "TestScene.h"
 
 using namespace oxygine;
 
-TestScene::TestScene() {
+static Models::CarEquipment carEquipment;
+
+TestScene::TestScene()
+    : m_modelCar(carEquipment) {
   m_resources.loadXML("res.xml");
   this->setSize(getStage()->getSize());
 
@@ -20,14 +24,15 @@ TestScene::TestScene() {
   this->addEventListener(TouchEvent::OUT, [this](Event* e) -> void { endTouch(safeCast<TouchEvent*>(e)); });
   this->addEventListener(TouchEvent::OVER, [this](Event* e) -> void { endTouch(safeCast<TouchEvent*>(e)); });
 
-  m_enginePower = 0.0f;
-  m_wheelTurn = 0.0f;
+  auto windowCenter = getStage()->getSize() / 2;
 
-  m_car = new Sprite();
-  m_car->setResAnim(m_resources.getResAnim("car"));
-  m_car->setAnchor(0.5, 0.5);
-  m_car->setPosition(getStage()->getSize() / 2);
-  addChild(m_car);
+  m_modelCar.setPosition(SIA::Vector2(windowCenter.x, windowCenter.y));
+
+  m_viewCar = new Sprite();
+  m_viewCar->setResAnim(m_resources.getResAnim("car"));
+  m_viewCar->setAnchor(0.5, 0.5);
+  m_viewCar->setPosition(windowCenter);
+  addChild(m_viewCar);
 }
 
 TestScene::~TestScene() {
@@ -47,6 +52,9 @@ void TestScene::update(const oxygine::UpdateState& us) {
     Vector2 right = reverse ? touches[1] : touches[0];
     setEnginePower(left, right);
     setWheelTurn(left, right);
+  } else {
+    m_modelCar.setEnginePower(0);
+    m_modelCar.setWheelTurn(0);
   }
 
   update(us.dt / 1000.0);
@@ -57,7 +65,7 @@ void TestScene::setEnginePower(const oxygine::Vector2& left, const oxygine::Vect
   double widht = getStage()->getSize().x;
   double trLeft = widht * (0.5 - backOffset) - left.x;
   double trRight = right.x - widht * (0.5 + backOffset);
-  m_enginePower = (trLeft + trRight) / (2 * widht * (0.5 - backOffset));
+  m_modelCar.setEnginePower((trLeft + trRight) / (2 * widht * (0.5 - backOffset)));
 }
 
 void TestScene::setWheelTurn(const oxygine::Vector2& left, const oxygine::Vector2& right) {
@@ -65,26 +73,15 @@ void TestScene::setWheelTurn(const oxygine::Vector2& left, const oxygine::Vector
   double trLeft = height * 0.5 - left.y;
   double trRight = right.y - height * 0.5;
 
-  m_wheelTurn = (trLeft + trRight) / height;
+  m_modelCar.setWheelTurn((trLeft + trRight) / height);
 }
 
 void TestScene::update(const double dt) {
-  SIALogDebug("ENGINE POWER:%f, WHEEL TURN:%f", m_enginePower, m_wheelTurn);
+  m_modelCar.update(dt);
 
-  double rotation = m_car->getRotation();
-  rotation += m_wheelTurn * M_PI_4 * dt * 4;
-
-  Vector2 position = m_car->getPosition();
-  position += Vector2(cos(rotation), sin(rotation)) * m_enginePower * 200 * dt;
-
-  m_car->setRotation(rotation);
-  m_car->setPosition(position);
-
-  double enginePowerDt = SIGN(m_enginePower) * dt * 0.2;
-  m_enginePower -= enginePowerDt;
-
-  double wheelTurnDt = SIGN(m_wheelTurn) * dt * 0.2;
-  m_wheelTurn -= wheelTurnDt;
+  m_viewCar->setRotation(m_modelCar.angle());
+  auto pos = m_modelCar.position();
+  m_viewCar->setPosition(Vector2(pos.x, pos.y));
 }
 
 
