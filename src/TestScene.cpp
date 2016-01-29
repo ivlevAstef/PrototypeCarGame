@@ -13,6 +13,7 @@
 using namespace oxygine;
 using namespace Controllers;
 
+
 static Models::CarEquipment carEquipment;
 
 TestScene::TestScene()
@@ -49,13 +50,14 @@ TestScene::~TestScene() {
 }
 
 void TestScene::update(const oxygine::UpdateState& us) {
-  if (2 == m_touchPositions.size()) {
-    std::vector<Vector2> touches;
-
-    for (const auto& iter : m_touchPositions) {
-      touches.push_back(iter.second);
+  std::vector<Vector2> touches;
+  for (const auto& iter : m_touchPositions) {
+    if (iter != sIncorrectTouch) {
+      touches.push_back(iter);
     }
+  }
 
+  if (2 == touches.size()) {
     bool reverse = touches[0].x < touches[1].x;
     Vector2 left = reverse ? touches[0] : touches[1];
     Vector2 right = reverse ? touches[1] : touches[0];
@@ -98,6 +100,8 @@ void TestScene::update(const double dt) {
 void TestScene::beginTouch(oxygine::TouchEvent* touch) {
   SIAAssert(nullptr != touch);
 
+  m_touchPositions.resize(MAX(m_touchPositions.size(), touch->index));
+
   m_touchPositions[touch->index] = touch->localPosition;
   SIALogDebug("BEGIN TOUCH: %d", touch->index);
 }
@@ -110,6 +114,10 @@ void TestScene::moveTouch(oxygine::TouchEvent* touch) {
 void TestScene::endTouch(oxygine::TouchEvent* touch) {
   SIAAssert(nullptr != touch);
 
-  m_touchPositions.erase(touch->index);
+  if (1 == m_touchPositions.size()) {
+    m_touchPositions.clear();
+  } else {
+    m_touchPositions.erase(touch->index);
+  }
   SIALogDebug("END TOUCH: %d", touch->index);
 }

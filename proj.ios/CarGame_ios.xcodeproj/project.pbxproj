@@ -30,6 +30,7 @@
 		848FA61D1C5A119A00073A5E /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 848FA61B1C5A119A00073A5E /* TestScene.cpp */; };
 		848FA6241C5A339C00073A5E /* Car.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 848FA6221C5A339C00073A5E /* Car.cpp */; };
 		848FA62C1C5B15EA00073A5E /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 848FA62A1C5B15EA00073A5E /* Map.cpp */; };
+		848FA6311C5B75AE00073A5E /* UniqueTouchPositions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 848FA62F1C5B75AE00073A5E /* UniqueTouchPositions.cpp */; };
 		9223FE7F1C2D913D000B1FDA /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9223FE7E1C2D913D000B1FDA /* GameController.framework */; };
 		C8860D93875589970329DCCD /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 4DA100C319512824B7570663 /* fonts */; };
 /* End PBXBuildFile section */
@@ -113,6 +114,8 @@
 		848FA62A1C5B15EA00073A5E /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
 		848FA62B1C5B15EA00073A5E /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
 		848FA62E1C5B17F000073A5E /* CoordinateConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoordinateConverter.h; sourceTree = "<group>"; };
+		848FA62F1C5B75AE00073A5E /* UniqueTouchPositions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UniqueTouchPositions.cpp; sourceTree = "<group>"; };
+		848FA6301C5B75AE00073A5E /* UniqueTouchPositions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniqueTouchPositions.h; sourceTree = "<group>"; };
 		9223FE7E1C2D913D000B1FDA /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -249,6 +252,8 @@
 				848FA61A1C5A084100073A5E /* SIANonCopyable.h */,
 				848FA6131C59FCB700073A5E /* Logger */,
 				848FA6251C5A34D200073A5E /* SIAVector2.h */,
+				848FA62F1C5B75AE00073A5E /* UniqueTouchPositions.cpp */,
+				848FA6301C5B75AE00073A5E /* UniqueTouchPositions.h */,
 			);
 			name = Common;
 			path = ../src/Common;
@@ -386,6 +391,7 @@
 				848FA6241C5A339C00073A5E /* Car.cpp in Sources */,
 				2DC477AC10D6C07B3FE008F6 /* entryPoint.cpp in Sources */,
 				848FA60E1C59F3DD00073A5E /* Application.cpp in Sources */,
+				848FA6311C5B75AE00073A5E /* UniqueTouchPositions.cpp in Sources */,
 				848FA61D1C5A119A00073A5E /* TestScene.cpp in Sources */,
 				848FA6111C59F49600073A5E /* ExampleMainActor.cpp in Sources */,
 				848FA62C1C5B15EA00073A5E /* Map.cpp in Sources */,

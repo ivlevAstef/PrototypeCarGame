@@ -32,7 +32,7 @@ class TestScene : public oxygine::Actor {
   void update(const double dt);
 
  private:
-  std::map<oxygine::pointer_index, oxygine::Vector2> m_touchPositions;
+  std::vector<oxygine::Vector2> m_touchPositions;
 
   oxygine::Resources m_resources;
   oxygine::spSprite m_viewCar;
