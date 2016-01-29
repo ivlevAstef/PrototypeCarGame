@@ -6,10 +6,12 @@
 // Copyright (c) SIA 2016. All Right Reserved.
 //
 
-
 #include "TestScene.h"
 
+#include "Controllers/CoordinateConverter.h"
+
 using namespace oxygine;
+using namespace Controllers;
 
 static Models::CarEquipment carEquipment;
 
@@ -24,15 +26,22 @@ TestScene::TestScene()
   this->addEventListener(TouchEvent::OUT, [this](Event* e) -> void { endTouch(safeCast<TouchEvent*>(e)); });
   this->addEventListener(TouchEvent::OVER, [this](Event* e) -> void { endTouch(safeCast<TouchEvent*>(e)); });
 
-  auto windowCenter = getStage()->getSize() / 2;
+  m_modelCar.setPosition(toModel(getStage()->getSize() / 2));
 
-  m_modelCar.setPosition(SIA::Vector2(windowCenter.x, windowCenter.y));
+  m_background = new Sprite();
+  m_background->setResAnim(m_resources.getResAnim("bg"));
+  m_background->setAnchor(0.5, 0.5);
+  m_background->setPosition(getStage()->getSize() / 2);
+  m_background->setScale(10);
+  m_background->attachTo(this);
 
   m_viewCar = new Sprite();
   m_viewCar->setResAnim(m_resources.getResAnim("car"));
-  m_viewCar->setAnchor(0.5, 0.5);
-  m_viewCar->setPosition(windowCenter);
-  addChild(m_viewCar);
+  m_viewCar->setPosition(getStage()->getSize() / 2);
+  m_viewCar->setAnchor(0.8, 0.5);
+  m_viewCar->attachTo(this);
+
+  update(0);
 }
 
 TestScene::~TestScene() {
@@ -80,21 +89,22 @@ void TestScene::update(const double dt) {
   m_modelCar.update(dt);
 
   m_viewCar->setRotation(m_modelCar.angle());
-  auto pos = m_modelCar.position();
-  m_viewCar->setPosition(Vector2(pos.x, pos.y));
+
+  //m_viewCar->setPosition(toView(m_modelCar.position()));
+  m_background->setPosition(m_background->getSize() - toView(m_modelCar.position()));
 }
 
 
 void TestScene::beginTouch(oxygine::TouchEvent* touch) {
   SIAAssert(nullptr != touch);
 
-  m_touchPositions[touch->index] = touch->position;
+  m_touchPositions[touch->index] = touch->localPosition;
   SIALogDebug("BEGIN TOUCH: %d", touch->index);
 }
 void TestScene::moveTouch(oxygine::TouchEvent* touch) {
   SIAAssert(nullptr != touch);
 
-  m_touchPositions[touch->index] = touch->position;
+  m_touchPositions[touch->index] = touch->localPosition;
   SIALogDebug("MOVE TOUCH: %d", touch->index);
 }
 void TestScene::endTouch(oxygine::TouchEvent* touch) {

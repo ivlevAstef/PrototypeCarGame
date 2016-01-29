@@ -11,10 +11,10 @@
 using namespace Models;
 using namespace SIA;
 
-const double Car::sWheelTurnChangePerTick = 0.2;
-const double Car::sEnginePowerChangePerTick = 0.05;
+const double Car::sWheelTurnChange = 1.0;
+const double Car::sEnginePowerChange = 0.5;
 
-const double Car::sAngleSpeedFactor = 0.97;
+const double Car::sAngleSpeedFactor = 0.075;
 
 Car::Car(const CarEquipment& equipment) {
   m_currentEnginePower = 0;
@@ -23,6 +23,7 @@ Car::Car(const CarEquipment& equipment) {
   m_enginePower = 0;
   setAngle(0);
   m_angleSpeed = 0;
+  m_dtSum = 0;
 
   m_equipment = equipment;
 }
@@ -56,28 +57,35 @@ void Car::useNitro() {
 }
 
 void Car::update(double dt) {
-  changeValueToNeedWithDelta(m_currentEnginePower, m_enginePower, sEnginePowerChangePerTick);
-  changeValueToNeedWithDelta(m_currentWheelTurn, m_wheelTurn, sWheelTurnChangePerTick);
+  m_dtSum += dt;
+  if (m_dtSum < 1.0e-9) {
+    return;
+  }
+  dt = m_dtSum;
+  m_dtSum = 0;
 
-  double airLegthFriction = pow(1 - m_equipment.airFriction(), dt);
-  double airCrossFriction = pow(1 - m_equipment.airCrossFriction(), dt);
+  changeValueToNeedWithDelta(m_currentEnginePower, m_enginePower, sEnginePowerChange * dt);
+  changeValueToNeedWithDelta(m_currentWheelTurn, m_wheelTurn, sWheelTurnChange * dt);
+
+  double airFriction = pow(1 - m_equipment.airFriction(), dt);
+  double rotateFriction = pow(1 - m_equipment.rotateFriction(), dt);
 
   //pos
-  m_accel = m_dir * (m_currentEnginePower * m_equipment.enginePower() / (m_equipment.mass() * dt));
-  m_speed += m_accel * airLegthFriction;
+  m_accel = m_dir * (m_currentEnginePower * m_equipment.enginePower() / m_equipment.mass());
+  m_speed += m_accel * airFriction;
 
-  Vector2 frictionLength = m_dir * limit(m_speed.dot(m_dir), m_equipment.wheelLengthFriction());
-  Vector2 frictionCross = -m_dir.perdendicular() * limit(m_speed.cross(m_dir), m_equipment.wheelCrossFriction());
+  Vector2 frictionLength = m_dir * m_speed.dot(m_dir) * m_equipment.wheelLengthFriction();
+  Vector2 frictionCross = -m_dir.perdendicular() * m_speed.cross(m_dir) * m_equipment.wheelCrossFriction();
   m_speed = m_speed - frictionLength - frictionCross;
 
   m_pos += m_speed * dt;
 
   //angle
+  double baseAngleSpeed = m_currentWheelTurn * sAngleSpeedFactor * m_speed.dot(m_dir);
   setAngle(m_angle + m_angleSpeed * dt);
 
-  double baseAngleSpeed = m_currentWheelTurn * sAngleSpeedFactor * m_speed.dot(m_dir) * dt;
-  m_angleSpeed = baseAngleSpeed + (m_angleSpeed - baseAngleSpeed) * airCrossFriction;
-  m_angleSpeed -= limit(m_angleSpeed - baseAngleSpeed, m_equipment.airCrossFriction() * dt);
+  m_angleSpeed = baseAngleSpeed + (m_angleSpeed - baseAngleSpeed) * rotateFriction;
+  m_angleSpeed -= m_angleSpeed * m_equipment.rotateFriction() * dt;
 }
 
 double Car::changeValueToNeedWithDelta(double& value, double need, double delta) {

@@ -1,12 +1,13 @@
 <?xml version="1.0"?>
 <resources>
-	<set path = "images" />
-	<atlas>
-		<image file="anim.png" cols = "7" />
-		<image file="button.png"/>
+  <set path = "images" />
+  <atlas>
+    <image file="anim.png" cols = "7" />
+    <image file="button.png"/>
     <image file="car.png"/>
-	</atlas>
-	
-	<set path = "fonts" />
-	<font file="main.fnt" />	
+    <image file="bg.jpg"/>
+  </atlas>
+
+  <set path = "fonts" />
+  <font file="main.fnt" />	
 </resources>

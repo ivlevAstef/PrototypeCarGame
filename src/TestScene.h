@@ -36,6 +36,7 @@ class TestScene : public oxygine::Actor {
 
   oxygine::Resources m_resources;
   oxygine::spSprite m_viewCar;
+  oxygine::spSprite m_background;
   Models::Car m_modelCar;
 };
 

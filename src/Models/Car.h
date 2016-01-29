@@ -17,8 +17,8 @@ namespace Models {
 
 class Car {
  private:
-  static const double sWheelTurnChangePerTick;
-  static const double sEnginePowerChangePerTick;
+  static const double sWheelTurnChange;
+  static const double sEnginePowerChange;
 
   static const double sAngleSpeedFactor;
 
@@ -56,6 +56,8 @@ class Car {
 
   double m_currentEnginePower;
   double m_currentWheelTurn;
+
+  double m_dtSum;
 
   CarEquipment m_equipment;
 };
