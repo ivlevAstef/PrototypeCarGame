@@ -22,6 +22,7 @@
 		1E839D002B2BA83FC83A695A /* images in Resources */ = {isa = PBXBuildFile; fileRef = 04FE4D4FB640E0DF92DFB865 /* images */; };
 		2DC477AC10D6C07B3FE008F6 /* entryPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 360377333740D8A2FD15BBE6 /* entryPoint.cpp */; };
 		3A631A475DE035FC53ADE5EA /* res.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7F3B12E3C9D554D9FE28101D /* res.xml */; };
+		846E36E61C60BC600055AC8A /* RaceWayInterpolation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 846E36E11C60BC600055AC8A /* RaceWayInterpolation.cpp */; };
 		848FA60A1C59EE5300073A5E /* liboxygine_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 848FA5FD1C59E8F200073A5E /* liboxygine_ios.a */; };
 		848FA60B1C59EE5300073A5E /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 848FA6031C59E8F200073A5E /* libSDL2.a */; };
 		848FA60E1C59F3DD00073A5E /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 848FA60C1C59F3DD00073A5E /* Application.cpp */; };
@@ -93,6 +94,11 @@
 		360377333740D8A2FD15BBE6 /* entryPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = entryPoint.cpp; path = ../src/entryPoint.cpp; sourceTree = "<group>"; };
 		4DA100C319512824B7570663 /* fonts */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = fonts; path = ../data/fonts; sourceTree = "<group>"; };
 		7F3B12E3C9D554D9FE28101D /* res.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wtf; name = res.xml; path = ../data/res.xml; sourceTree = "<group>"; };
+		846E36E11C60BC600055AC8A /* RaceWayInterpolation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RaceWayInterpolation.cpp; sourceTree = "<group>"; };
+		846E36E21C60BC600055AC8A /* RaceWayInterpolation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaceWayInterpolation.h; sourceTree = "<group>"; };
+		846E36E31C60BC600055AC8A /* SIAFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIAFunctions.h; sourceTree = "<group>"; };
+		846E36E41C60BC600055AC8A /* SIAMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIAMacros.h; sourceTree = "<group>"; };
+		846E36E51C60BC600055AC8A /* SIAVector2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIAVector2.h; sourceTree = "<group>"; };
 		848FA60C1C59F3DD00073A5E /* Application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Application.cpp; path = ../src/Application.cpp; sourceTree = "<group>"; };
 		848FA60D1C59F3DD00073A5E /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Application.h; path = ../src/Application.h; sourceTree = "<group>"; };
 		848FA60F1C59F49600073A5E /* ExampleMainActor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ExampleMainActor.cpp; path = ../src/ExampleMainActor.cpp; sourceTree = "<group>"; };
@@ -105,11 +111,8 @@
 		848FA61A1C5A084100073A5E /* SIANonCopyable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIANonCopyable.h; sourceTree = "<group>"; };
 		848FA61B1C5A119A00073A5E /* TestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestScene.cpp; path = ../src/TestScene.cpp; sourceTree = "<group>"; };
 		848FA61C1C5A119A00073A5E /* TestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestScene.h; path = ../src/TestScene.h; sourceTree = "<group>"; };
-		848FA61E1C5A21C000073A5E /* SIAMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SIAMacros.h; sourceTree = "<group>"; };
 		848FA6221C5A339C00073A5E /* Car.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Car.cpp; sourceTree = "<group>"; };
 		848FA6231C5A339C00073A5E /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
-		848FA6251C5A34D200073A5E /* SIAVector2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SIAVector2.h; sourceTree = "<group>"; };
-		848FA6271C5A41D700073A5E /* SIAFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIAFunctions.h; sourceTree = "<group>"; };
 		848FA6291C5A476700073A5E /* CarEquipment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarEquipment.h; sourceTree = "<group>"; };
 		848FA62A1C5B15EA00073A5E /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
 		848FA62B1C5B15EA00073A5E /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
@@ -217,6 +220,18 @@
 			name = Sources;
 			sourceTree = "<group>";
 		};
+		846E36E01C60BC600055AC8A /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				846E36E11C60BC600055AC8A /* RaceWayInterpolation.cpp */,
+				846E36E21C60BC600055AC8A /* RaceWayInterpolation.h */,
+				846E36E31C60BC600055AC8A /* SIAFunctions.h */,
+				846E36E41C60BC600055AC8A /* SIAMacros.h */,
+				846E36E51C60BC600055AC8A /* SIAVector2.h */,
+			);
+			path = Math;
+			sourceTree = "<group>";
+		};
 		848FA5F81C59E8E300073A5E /* OxygineFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,11 +262,9 @@
 		848FA6121C59FCB700073A5E /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				848FA6271C5A41D700073A5E /* SIAFunctions.h */,
-				848FA61E1C5A21C000073A5E /* SIAMacros.h */,
+				846E36E01C60BC600055AC8A /* Math */,
 				848FA61A1C5A084100073A5E /* SIANonCopyable.h */,
 				848FA6131C59FCB700073A5E /* Logger */,
-				848FA6251C5A34D200073A5E /* SIAVector2.h */,
 				848FA62F1C5B75AE00073A5E /* UniqueTouchPositions.cpp */,
 				848FA6301C5B75AE00073A5E /* UniqueTouchPositions.h */,
 			);
@@ -391,6 +404,7 @@
 				848FA6241C5A339C00073A5E /* Car.cpp in Sources */,
 				2DC477AC10D6C07B3FE008F6 /* entryPoint.cpp in Sources */,
 				848FA60E1C59F3DD00073A5E /* Application.cpp in Sources */,
+				846E36E61C60BC600055AC8A /* RaceWayInterpolation.cpp in Sources */,
 				848FA6311C5B75AE00073A5E /* UniqueTouchPositions.cpp in Sources */,
 				848FA61D1C5A119A00073A5E /* TestScene.cpp in Sources */,
 				848FA6111C59F49600073A5E /* ExampleMainActor.cpp in Sources */,

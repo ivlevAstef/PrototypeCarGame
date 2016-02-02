@@ -10,7 +10,7 @@
 #ifndef _CONTROLLERS_COORDINATE_CONVERTER_H__
 #define _CONTROLLERS_COORDINATE_CONVERTER_H__
 
-#include "Common/SIAVector2.h"
+#include "Common/Math/SIAVector2.h"
 #include "oxygine-framework.h"
 
 namespace Controllers {

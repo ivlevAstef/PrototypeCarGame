@@ -17,6 +17,8 @@
 /// SIACheckRet
 
 #ifdef ENABLE_DEBUG
+#include <cstdlib>
+
 #define SIAAssertMsg(CONDITION, MSG, ...)                      \
   if (!(CONDITION)) {                                          \
     SIA::logToStream("Assert", SIALogMsg(MSG, ##__VA_ARGS__)); \

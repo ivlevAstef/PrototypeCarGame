@@ -11,7 +11,7 @@
 #define _MODELS_CAR_H_
 
 #include "CarEquipment.h"
-#include "Common/SIAVector2.h"
+#include "Common/Math/SIAVector2.h"
 
 namespace Models {
 

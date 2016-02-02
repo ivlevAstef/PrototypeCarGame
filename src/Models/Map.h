@@ -10,9 +10,14 @@
 #ifndef _MODELS_MAP_H_
 #define _MODELS_MAP_H_
 
+#include <vector>
+#include "Common/Math/SIAVector2.h"
+
 namespace Models {
 class Map {
  public:
+ private:
+  std::vector<SIA::Vector2> m_mapPoints;
 };
 }
 
