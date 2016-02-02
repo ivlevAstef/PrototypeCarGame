@@ -31,6 +31,7 @@ namespace oxygine
         PointerState* getTouchByIndex(int index);
 
 #ifndef __S3E__
+        void createTouchID2index(int id);
         int touchID2index(int id);
         PointerState* getTouchByID(int id);
 #endif

@@ -92,6 +92,21 @@ namespace oxygine
     }
 
 #ifndef __S3E__
+    void Input::createTouchID2index(int id)
+    {
+      id += 1;//id could be = 0 ?
+      for (int i = 0; i < MAX_TOUCHES; ++i)
+      {
+        int& d = _ids[i];
+        int index = i + 1;
+        if (d == 0)
+        {
+          d = id;
+          break;
+        }
+      }
+    }
+  
     int Input::touchID2index(int id)
     {
         id += 1;//id could be = 0 ?
@@ -99,11 +114,6 @@ namespace oxygine
         {
             int& d = _ids[i];
             int index = i + 1;
-            if (d == 0)
-            {
-                d = id;
-                return index;
-            }
 
             if (d == id)
                 return index;

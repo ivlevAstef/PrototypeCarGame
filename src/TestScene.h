@@ -11,6 +11,7 @@
 #define TEST_SCENE_H_
 
 #include <map>
+#include "Common/UniqueTouchPositions.h"
 #include "Models/Car.h"
 #include "oxygine-framework.h"
 
@@ -32,7 +33,7 @@ class TestScene : public oxygine::Actor {
   void update(const double dt);
 
  private:
-  std::vector<oxygine::Vector2> m_touchPositions;
+  UniqueTouchPositions m_touchPositions;
 
   oxygine::Resources m_resources;
   oxygine::spSprite m_viewCar;

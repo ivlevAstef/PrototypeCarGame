@@ -33,7 +33,7 @@ Application::~Application() {
 }
 
 void Application::update() {
-  SIALogTrace("Application update.");
+  //SIALogTrace("Application update.");
 
   validateCurrentState();
 }

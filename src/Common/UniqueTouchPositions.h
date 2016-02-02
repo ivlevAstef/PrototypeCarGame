@@ -21,8 +21,6 @@ class UniqueTouchPositions {
  private:
   static oxygine::Vector2 sIncorrectTouch;
 
-  void trim();
-
   std::vector<oxygine::Vector2> m_data;
 };
 

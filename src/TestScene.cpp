@@ -13,7 +13,6 @@
 using namespace oxygine;
 using namespace Controllers;
 
-
 static Models::CarEquipment carEquipment;
 
 TestScene::TestScene()
@@ -24,8 +23,7 @@ TestScene::TestScene()
   this->addEventListener(TouchEvent::TOUCH_DOWN, [this](Event* e) -> void { beginTouch(safeCast<TouchEvent*>(e)); });
   this->addEventListener(TouchEvent::MOVE, [this](Event* e) -> void { moveTouch(safeCast<TouchEvent*>(e)); });
   this->addEventListener(TouchEvent::TOUCH_UP, [this](Event* e) -> void { endTouch(safeCast<TouchEvent*>(e)); });
-  this->addEventListener(TouchEvent::OUT, [this](Event* e) -> void { endTouch(safeCast<TouchEvent*>(e)); });
-  this->addEventListener(TouchEvent::OVER, [this](Event* e) -> void { endTouch(safeCast<TouchEvent*>(e)); });
+  //this->addEventListener(TouchEvent::OUT, [this](Event* e) -> void { endTouch(safeCast<TouchEvent*>(e)); });
 
   m_modelCar.setPosition(toModel(getStage()->getSize() / 2));
 
@@ -50,12 +48,7 @@ TestScene::~TestScene() {
 }
 
 void TestScene::update(const oxygine::UpdateState& us) {
-  std::vector<Vector2> touches;
-  for (const auto& iter : m_touchPositions) {
-    if (iter != sIncorrectTouch) {
-      touches.push_back(iter);
-    }
-  }
+  std::vector<Vector2> touches = m_touchPositions.touchPositions();
 
   if (2 == touches.size()) {
     bool reverse = touches[0].x < touches[1].x;
@@ -100,24 +93,15 @@ void TestScene::update(const double dt) {
 void TestScene::beginTouch(oxygine::TouchEvent* touch) {
   SIAAssert(nullptr != touch);
 
-  m_touchPositions.resize(MAX(m_touchPositions.size(), touch->index));
-
-  m_touchPositions[touch->index] = touch->localPosition;
-  SIALogDebug("BEGIN TOUCH: %d", touch->index);
+  m_touchPositions.addTouch(touch);
 }
 void TestScene::moveTouch(oxygine::TouchEvent* touch) {
   SIAAssert(nullptr != touch);
 
-  m_touchPositions[touch->index] = touch->localPosition;
-  SIALogDebug("MOVE TOUCH: %d", touch->index);
+  m_touchPositions.moveTouch(touch);
 }
 void TestScene::endTouch(oxygine::TouchEvent* touch) {
   SIAAssert(nullptr != touch);
 
-  if (1 == m_touchPositions.size()) {
-    m_touchPositions.clear();
-  } else {
-    m_touchPositions.erase(touch->index);
-  }
-  SIALogDebug("END TOUCH: %d", touch->index);
+  m_touchPositions.removeTouch(touch);
 }

@@ -15,32 +15,36 @@ Vector2 UniqueTouchPositions::sIncorrectTouch = Vector2(-1, -1);
 void UniqueTouchPositions::addTouch(oxygine::TouchEvent* touch) {
   SIACheckRet(nullptr == touch || touch->index < 1, );
 
-  m_data.resize(MAX(m_data.size(), touch->index));
+  m_data.resize(MAX(m_data.size(), touch->index), sIncorrectTouch);
 
-  m_data[touch->index - 1] = touch->position;
+  m_data[touch->index - 1] = touch->localPosition;
+  SIALogInfo("Add Touch with index:%d", touch->index);
 }
 
 void UniqueTouchPositions::moveTouch(oxygine::TouchEvent* touch) {
   SIACheckRet(nullptr == touch || touch->index < 1, );
 
   if (m_data.size() < touch->index) {
-    SIALogError("Incorrect touch data. Something went wrong.");
+    SIALogError("Incorrect touch data (Touch index:%d). Something went wrong.", touch->index);
     return;
   }
 
-  m_data[touch->index - 1] = touch->position;
+  m_data[touch->index - 1] = touch->localPosition;
+
+  SIALogTrace("Move Touch with index:%d", touch->index);
 }
 
 void UniqueTouchPositions::removeTouch(oxygine::TouchEvent* touch) {
   SIACheckRet(nullptr == touch || touch->index < 1, );
 
-  if (m_data.size() < touch->index) {
+  if (m_data.size() < touch->index || sIncorrectTouch == m_data[touch->index - 1]) {
     SIALogError("Incorrect touch data. Something went wrong.");
     return;
   }
 
   m_data[touch->index - 1] = sIncorrectTouch;
-  trim();
+
+  SIALogInfo("Remove Touch with index:%d", touch->index);
 }
 
 std::vector<oxygine::Vector2> UniqueTouchPositions::touchPositions() {
@@ -52,20 +56,4 @@ std::vector<oxygine::Vector2> UniqueTouchPositions::touchPositions() {
   }
 
   return result;
-}
-
-void UniqueTouchPositions::trim() {
-  size_t firstCorrect = 0;
-  size_t lastCorrect = 0;
-
-  for (size_t i = 0; i < m_data.size(); i++) {
-    if (sIncorrectTouch == m_data[i]) {
-      firstCorrect += (i == firstCorrect) ? 1 : 0;
-    } else {
-      lastCorrect = i;
-    }
-  }
-
-  m_data.erase(m_data.begin(), m_data.begin() + firstCorrect);
-  m_data.erase(m_data.begin() + lastCorrect, m_data.end());
 }

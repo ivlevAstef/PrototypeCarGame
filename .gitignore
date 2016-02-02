@@ -1,3 +1,5 @@
 proj.ios/build
 *.xcuserstate
 *.xcworkspacedata
+oxygine-framework/oxygine/SDL/ios/oxygine/build
+SDL/Xcode-iOS/SDL/build

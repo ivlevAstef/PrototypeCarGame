@@ -26,7 +26,7 @@
 // enable debug,info,assert level, also error stoped program.
 #define ENABLE_DEBUG
 // enable trace level
-//#define ENABLE_TRACE
+#define ENABLE_TRACE
 
 namespace SIA {
 extern void logToStream(const char* logLevel, const char* file, int line, const char* module, const char* message, ...);

@@ -652,6 +652,11 @@ namespace oxygine
 
                 break;
                 case SDL_FINGERDOWN:
+                {
+                  if (_useTouchAPI) {
+                    input->createTouchID2index((int)event.tfinger.fingerId);
+                  }
+                }
                 case SDL_FINGERUP:
                 {
                     if (_useTouchAPI)
