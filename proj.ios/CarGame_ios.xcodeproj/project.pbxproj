@@ -23,6 +23,7 @@
 		2DC477AC10D6C07B3FE008F6 /* entryPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 360377333740D8A2FD15BBE6 /* entryPoint.cpp */; };
 		3A631A475DE035FC53ADE5EA /* res.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7F3B12E3C9D554D9FE28101D /* res.xml */; };
 		846E36E61C60BC600055AC8A /* RaceWayInterpolation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 846E36E11C60BC600055AC8A /* RaceWayInterpolation.cpp */; };
+		846E36ED1C61E67C0055AC8A /* PrimitiveDraw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 846E36EB1C61E67C0055AC8A /* PrimitiveDraw.cpp */; };
 		848FA60A1C59EE5300073A5E /* liboxygine_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 848FA5FD1C59E8F200073A5E /* liboxygine_ios.a */; };
 		848FA60B1C59EE5300073A5E /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 848FA6031C59E8F200073A5E /* libSDL2.a */; };
 		848FA60E1C59F3DD00073A5E /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 848FA60C1C59F3DD00073A5E /* Application.cpp */; };
@@ -99,6 +100,8 @@
 		846E36E31C60BC600055AC8A /* SIAFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIAFunctions.h; sourceTree = "<group>"; };
 		846E36E41C60BC600055AC8A /* SIAMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIAMacros.h; sourceTree = "<group>"; };
 		846E36E51C60BC600055AC8A /* SIAVector2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIAVector2.h; sourceTree = "<group>"; };
+		846E36EB1C61E67C0055AC8A /* PrimitiveDraw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PrimitiveDraw.cpp; sourceTree = "<group>"; };
+		846E36EC1C61E67C0055AC8A /* PrimitiveDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitiveDraw.h; sourceTree = "<group>"; };
 		848FA60C1C59F3DD00073A5E /* Application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Application.cpp; path = ../src/Application.cpp; sourceTree = "<group>"; };
 		848FA60D1C59F3DD00073A5E /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Application.h; path = ../src/Application.h; sourceTree = "<group>"; };
 		848FA60F1C59F49600073A5E /* ExampleMainActor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ExampleMainActor.cpp; path = ../src/ExampleMainActor.cpp; sourceTree = "<group>"; };
@@ -232,6 +235,15 @@
 			path = Math;
 			sourceTree = "<group>";
 		};
+		846E36EA1C61E67C0055AC8A /* Oxygine */ = {
+			isa = PBXGroup;
+			children = (
+				846E36EB1C61E67C0055AC8A /* PrimitiveDraw.cpp */,
+				846E36EC1C61E67C0055AC8A /* PrimitiveDraw.h */,
+			);
+			path = Oxygine;
+			sourceTree = "<group>";
+		};
 		848FA5F81C59E8E300073A5E /* OxygineFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +274,7 @@
 		848FA6121C59FCB700073A5E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				846E36EA1C61E67C0055AC8A /* Oxygine */,
 				846E36E01C60BC600055AC8A /* Math */,
 				848FA61A1C5A084100073A5E /* SIANonCopyable.h */,
 				848FA6131C59FCB700073A5E /* Logger */,
@@ -406,6 +419,7 @@
 				848FA60E1C59F3DD00073A5E /* Application.cpp in Sources */,
 				846E36E61C60BC600055AC8A /* RaceWayInterpolation.cpp in Sources */,
 				848FA6311C5B75AE00073A5E /* UniqueTouchPositions.cpp in Sources */,
+				846E36ED1C61E67C0055AC8A /* PrimitiveDraw.cpp in Sources */,
 				848FA61D1C5A119A00073A5E /* TestScene.cpp in Sources */,
 				848FA6111C59F49600073A5E /* ExampleMainActor.cpp in Sources */,
 				848FA62C1C5B15EA00073A5E /* Map.cpp in Sources */,

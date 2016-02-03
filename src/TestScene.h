@@ -11,8 +11,10 @@
 #define TEST_SCENE_H_
 
 #include <map>
+#include "Common/Oxygine/PrimitiveDraw.h"
 #include "Common/UniqueTouchPositions.h"
 #include "Models/Car.h"
+#include "Models/Map.h"
 #include "oxygine-framework.h"
 
 class TestScene : public oxygine::Actor {
@@ -32,13 +34,18 @@ class TestScene : public oxygine::Actor {
 
   void update(const double dt);
 
+  void createTrack();
+
  private:
   UniqueTouchPositions m_touchPositions;
 
   oxygine::Resources m_resources;
   oxygine::spSprite m_viewCar;
-  oxygine::spSprite m_background;
+  oxygine::spSprite m_backgroundTexture;
+  oxygine::spActor m_background;
+  oxygine::spPrimitiveDraw m_raceWay;
   Models::Car m_modelCar;
+  Models::Map m_modelMap;
 };
 
 #endif /* TEST_SCENE_H_ */

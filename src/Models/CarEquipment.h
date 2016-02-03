@@ -26,7 +26,7 @@ class CarEquipment {
   }
 
   double rotateFriction() const {
-    return 0.35;
+    return 0.65;
   }
 
   double wheelLengthFriction() const {

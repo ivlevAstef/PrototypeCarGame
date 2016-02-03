@@ -20,6 +20,7 @@ class Car {
   static const double sWheelTurnChange;
   static const double sEnginePowerChange;
 
+  static const double sWheelTurnFactor;
   static const double sAngleSpeedFactor;
 
  public:
@@ -30,6 +31,8 @@ class Car {
 
   void setAngle(double angle);
   double angle() const;
+
+  const SIA::Vector2& speed() const;
 
   void setEnginePower(double enginePower);
   void setWheelTurn(double wheelTurn);

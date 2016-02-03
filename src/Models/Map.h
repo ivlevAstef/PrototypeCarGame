@@ -10,14 +10,21 @@
 #ifndef _MODELS_MAP_H_
 #define _MODELS_MAP_H_
 
-#include <vector>
-#include "Common/Math/SIAVector2.h"
+#include <memory>
+#include "Common/Math/RaceWayInterpolation.h"
 
 namespace Models {
 class Map {
  public:
+  Map();
+  
+  ///dWeight [-1, 1]
+  SIA::Vector2 get(double len, double dWeight = 0) const;
+  
+  double length() const;
+  
  private:
-  std::vector<SIA::Vector2> m_mapPoints;
+  std::unique_ptr<SIA::RaceWayInterpolation>  m_pRaceWay;
 };
 }
 

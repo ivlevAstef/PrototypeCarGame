@@ -11,10 +11,11 @@
 using namespace Models;
 using namespace SIA;
 
-const double Car::sWheelTurnChange = 1.0;
+const double Car::sWheelTurnChange = 2.0;
 const double Car::sEnginePowerChange = 0.5;
 
-const double Car::sAngleSpeedFactor = 0.075;
+const double Car::sWheelTurnFactor = 0.002;
+const double Car::sAngleSpeedFactor = 0.05;
 
 Car::Car(const CarEquipment& equipment) {
   m_currentEnginePower = 0;
@@ -34,6 +35,10 @@ void Car::setPosition(SIA::Vector2 pos) {
 
 const SIA::Vector2& Car::position() const {
   return m_pos;
+}
+
+const SIA::Vector2& Car::speed() const {
+  return m_speed;
 }
 
 void Car::setAngle(double angle) {
@@ -81,7 +86,7 @@ void Car::update(double dt) {
   m_pos += m_speed * dt;
 
   //angle
-  double baseAngleSpeed = m_currentWheelTurn * sAngleSpeedFactor * m_speed.dot(m_dir);
+  double baseAngleSpeed = m_currentWheelTurn * m_speed.length() * sWheelTurnFactor + SIGN(m_currentWheelTurn) * m_speed.dot(m_dir) * sAngleSpeedFactor;
   setAngle(m_angle + m_angleSpeed * dt);
 
   m_angleSpeed = baseAngleSpeed + (m_angleSpeed - baseAngleSpeed) * rotateFriction;

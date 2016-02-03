@@ -15,7 +15,7 @@
 
 namespace Controllers {
 
-#define MULT 5
+#define MULT 3
 oxygine::Vector2 toView(const SIA::Vector2& pos) {
   return oxygine::Vector2(pos.x * MULT, pos.y * MULT);
 }

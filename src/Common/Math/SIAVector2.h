@@ -107,9 +107,6 @@ class VectorT2 {
   T length() const {
     return (T)sqrt(x * x + y * y);
   }
-  T sqlength() const {
-    return dot(*this);
-  }
 
   void normalize() {
     T len = length();

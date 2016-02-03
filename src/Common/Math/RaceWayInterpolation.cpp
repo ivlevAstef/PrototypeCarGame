@@ -18,6 +18,7 @@ const SIA::Vector2 RaceWayInterpolation::sIncorrectPoint = Vector2(DBL_MIN, DBL_
 
 RaceWayInterpolation::RaceWayInterpolation(const std::vector<WayPoint>& points) {
   SIACheckRet(points.size() < sMinPointsCount, );
+
   m_interpolateMult = sInterpolationMult;
   m_points = points;
   setupLength();
@@ -86,8 +87,8 @@ SIA::Vector2 RaceWayInterpolation::interpolate(const WayPoint& wayP1, const WayP
   SIA::Vector2 dir1 = wayP1.dir.normalized();
   SIA::Vector2 dir2 = wayP2.dir.normalized();
 
-  SIA::Vector2 p1 = wayP1.pos + dir1.perdendicular() * dWeight * wayP1.weight;
-  SIA::Vector2 p2 = wayP2.pos + dir2.perdendicular() * dWeight * wayP2.weight;
+  SIA::Vector2 p1 = wayP1.pos - dir1.perdendicular() * dWeight * wayP1.weight / 2;
+  SIA::Vector2 p2 = wayP2.pos - dir2.perdendicular() * dWeight * wayP2.weight / 2;
   SIA::Vector2 linear = p2 - p1;
 
   SIA::Vector2 p1h = p1 + dir1 * linear.dot(dir1);
