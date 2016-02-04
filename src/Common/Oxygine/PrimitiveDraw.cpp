@@ -68,17 +68,13 @@ void PrimitiveDraw::doRender(const RenderState& rs) {
   drawCommand(*this, rs);
 }
 
-void PrimitiveDraw::drawPolygon(const std::vector<Vector2>& vertices, const Color& color) {
-  drawLines(vertices, color);
-}
-
 void PrimitiveDraw::drawSolidPolygon(const std::vector<Vector2>& vertices, const Color& color) {
   drawTriangles(vertices, color);
 }
 
-void PrimitiveDraw::drawCircle(const Vector2& center, double radius, size_t segments, const Color& color) {
+void PrimitiveDraw::drawCircle(const Vector2& center, double radius, size_t segments, const Color& color, double lineWidth) {
   createCircleVertices(center, radius, segments);
-  drawLines(m_verticesMemory, color);
+  drawLines(m_verticesMemory, color, lineWidth);
 }
 
 void PrimitiveDraw::drawSolidCircle(const Vector2& center, double radius, size_t segments, const Color& color) {
@@ -86,15 +82,15 @@ void PrimitiveDraw::drawSolidCircle(const Vector2& center, double radius, size_t
   drawTriangles(m_verticesMemory, color);
 }
 
-void PrimitiveDraw::drawLine(const Vector2& p1, const Vector2& p2, const Color& color) {
+void PrimitiveDraw::drawLine(const Vector2& p1, const Vector2& p2, const Color& color, double lineWidth) {
   m_verticesMemory.resize(2);
   m_verticesMemory[0] = p1;
   m_verticesMemory[1] = p2;
-  drawLines(m_verticesMemory, color);
+  drawLines(m_verticesMemory, color, lineWidth);
 }
 
-void PrimitiveDraw::drawPolyLine(const std::vector<Vector2>& points, const Color& color) {
-  drawLines(points, color);
+void PrimitiveDraw::drawPolyLine(const std::vector<Vector2>& points, const Color& color, double lineWidth) {
+  drawLines(points, color, lineWidth);
 }
 
 void PrimitiveDraw::createCircleVertices(const Vector2& center, size_t segments, double radius) {
@@ -120,7 +116,8 @@ void PrimitiveDraw::drawTriangles(const std::vector<Vector2>& vertices, const Co
   oxglDisableVertexAttribArray(0);
 }
 
-void PrimitiveDraw::drawLines(const std::vector<Vector2>& vertices, const Color& color) {
+void PrimitiveDraw::drawLines(const std::vector<Vector2>& vertices, const Color& color, double lineWidth) {
+  glLineWidth(lineWidth);
   oxglEnableVertexAttribArray(0);
   oxglVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, (GLfloat*)&vertices[0].x);
 
@@ -129,4 +126,5 @@ void PrimitiveDraw::drawLines(const std::vector<Vector2>& vertices, const Color&
   glDrawArrays(GL_LINE_LOOP, 0, vertices.size());
 
   oxglDisableVertexAttribArray(0);
+  glLineWidth(1);
 }

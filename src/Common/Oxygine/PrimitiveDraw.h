@@ -21,15 +21,14 @@ class PrimitiveDraw : public Actor {
  public:
   PrimitiveDraw();
 
-  void drawPolygon(const std::vector<Vector2>& vertices, const Color& color);
   void drawSolidPolygon(const std::vector<Vector2>& vertices, const Color& color);
 
-  void drawCircle(const Vector2& center, double radius, size_t segments, const Color& color);
+  void drawCircle(const Vector2& center, double radius, size_t segments, const Color& color, double lineWidth = 1);
   void drawSolidCircle(const Vector2& center, double radius, size_t segments, const Color& color);
 
-  void drawLine(const Vector2& p1, const Vector2& p2, const Color& color);
+  void drawLine(const Vector2& p1, const Vector2& p2, const Color& color, double lineWidth = 1);
 
-  void drawPolyLine(const std::vector<Vector2>& points, const Color& color);
+  void drawPolyLine(const std::vector<Vector2>& points, const Color& color, double lineWidth = 1);
 
   std::function<void(PrimitiveDraw&, const RenderState&)> drawCommand;
 
@@ -40,7 +39,7 @@ class PrimitiveDraw : public Actor {
   void createPolygonVertices(const std::vector<Vector2>& vertices);
 
   void drawTriangles(const std::vector<Vector2>& vertices, const Color& color);
-  void drawLines(const std::vector<Vector2>& vertices, const Color& color);
+  void drawLines(const std::vector<Vector2>& vertices, const Color& color, double lineWidth);
 
   std::vector<Vector2> m_verticesMemory;
   std::unique_ptr<ShaderProgramGL> m_pProgram;

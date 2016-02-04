@@ -23,6 +23,7 @@ class RaceWayInterpolation {
     SIA::Vector2 pos;
     SIA::Vector2 dir;
     double weight;
+    double bezieFactor;
   };
 
  public:

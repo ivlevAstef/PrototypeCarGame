@@ -11,7 +11,7 @@
 
 using namespace SIA;
 
-static const double sInterpolationMult = 10;
+static const double sInterpolationMult = 2;
 
 const size_t RaceWayInterpolation::sMinPointsCount = 3;
 const SIA::Vector2 RaceWayInterpolation::sIncorrectPoint = Vector2(DBL_MIN, DBL_MIN);
@@ -91,8 +91,8 @@ SIA::Vector2 RaceWayInterpolation::interpolate(const WayPoint& wayP1, const WayP
   SIA::Vector2 p2 = wayP2.pos - dir2.perdendicular() * dWeight * wayP2.weight / 2;
   SIA::Vector2 linear = p2 - p1;
 
-  SIA::Vector2 p1h = p1 + dir1 * linear.dot(dir1);
-  SIA::Vector2 p2h = p2 - dir2 * linear.dot(dir2);
+  SIA::Vector2 p1h = p1 + dir1 * linear.dot(dir1) * wayP1.bezieFactor;
+  SIA::Vector2 p2h = p2 - dir2 * linear.dot(dir2) * wayP2.bezieFactor;
 
   return bezie3Interplolate(p1, p1h, p2h, p2, dt);
 }

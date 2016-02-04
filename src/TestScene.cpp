@@ -74,7 +74,9 @@ void TestScene::setEnginePower(const oxygine::Vector2& left, const oxygine::Vect
   double widht = getStage()->getSize().x;
   double trLeft = widht * (0.5 - backOffset) - left.x;
   double trRight = right.x - widht * (0.5 + backOffset);
-  m_modelCar.setEnginePower((trLeft + trRight) / (2 * widht * (0.5 - backOffset)));
+
+  double enginePower = (trLeft + trRight) / (2 * widht * (0.5 - backOffset));
+  m_modelCar.setEnginePower(enginePower * 1.25);
 }
 
 void TestScene::setWheelTurn(const oxygine::Vector2& left, const oxygine::Vector2& right) {
@@ -82,7 +84,8 @@ void TestScene::setWheelTurn(const oxygine::Vector2& left, const oxygine::Vector
   double trLeft = height * 0.5 - left.y;
   double trRight = right.y - height * 0.5;
 
-  m_modelCar.setWheelTurn((trLeft + trRight) / height);
+  double wheelTurn = (trLeft + trRight) / height;
+  m_modelCar.setWheelTurn(SIGN(wheelTurn) * wheelTurn * wheelTurn);
 }
 
 void TestScene::update(const double dt) {
@@ -110,18 +113,18 @@ void TestScene::endTouch(oxygine::TouchEvent* touch) {
 
 void TestScene::createTrack() {
   static std::vector<Vector2> pointsCenter;
-  for (double len = 0; len < m_modelMap.length(); len += 2) {
+  for (double len = 0; len < m_modelMap.length(); len += 5) {
     pointsCenter.push_back(toView(m_modelMap.get(len)));
   }
 
   static std::vector<Vector2> pointsLeft;
-  for (double len = 0; len < m_modelMap.length(); len += 2) {
-    pointsCenter.push_back(toView(m_modelMap.get(len, -0.75)));
+  for (double len = 0; len < m_modelMap.length(); len += 5) {
+    pointsLeft.push_back(toView(m_modelMap.get(len, -0.75)));
   }
 
   static std::vector<Vector2> pointsRight;
-  for (double len = 0; len < m_modelMap.length(); len += 2) {
-    pointsCenter.push_back(toView(m_modelMap.get(len, 0.75)));
+  for (double len = 0; len < m_modelMap.length(); len += 5) {
+    pointsRight.push_back(toView(m_modelMap.get(len, 0.75)));
   }
 
   m_raceWay = new PrimitiveDraw();
@@ -131,8 +134,8 @@ void TestScene::createTrack() {
     const Color color(255, 0, 0, 255);
     const Color colorBorder(0, 0, 255, 255);
 
-    m_raceWay->drawPolyLine(pointsCenter, color);
-    m_raceWay->drawPolyLine(pointsLeft, colorBorder);
-    m_raceWay->drawPolyLine(pointsRight, colorBorder);
+    m_raceWay->drawPolyLine(pointsCenter, color, 1);
+    m_raceWay->drawPolyLine(pointsLeft, colorBorder, 3);
+    m_raceWay->drawPolyLine(pointsRight, colorBorder, 3);
   };
 }
