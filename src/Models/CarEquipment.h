@@ -14,7 +14,7 @@ namespace Models {
 class CarEquipment {
  public:
   double mass() const {
-    return 1250;  //kg
+    return 1000;  //kg
   }
 
   double enginePower() const {
@@ -26,15 +26,15 @@ class CarEquipment {
   }
 
   double rotateFriction() const {
-    return 0.65;
+    return 0.09;
   }
 
   double wheelLengthFriction() const {
-    return 0.001;
+    return 0.002;
   }
 
   double wheelCrossFriction() const {
-    return 0.05;
+    return 0.025;
   }
 
  private:

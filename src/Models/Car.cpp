@@ -14,8 +14,7 @@ using namespace SIA;
 const double Car::sWheelTurnChange = 2.0;
 const double Car::sEnginePowerChange = 0.5;
 
-const double Car::sWheelTurnFactor = 0.002;
-const double Car::sAngleSpeedFactor = 0.05;
+const double Car::sAngleSpeedFactor = 0.0001;
 
 Car::Car(const CarEquipment& equipment) {
   m_currentEnginePower = 0;
@@ -86,11 +85,12 @@ void Car::update(double dt) {
   m_pos += m_speed * dt;
 
   //angle
-  double baseAngleSpeed = m_currentWheelTurn * m_speed.length() * sWheelTurnFactor + SIGN(m_currentWheelTurn) * m_speed.dot(m_dir) * sAngleSpeedFactor;
-  setAngle(m_angle + m_angleSpeed * dt);
+  double angleAccel = m_currentWheelTurn * m_speed.dot(m_dir) * sAngleSpeedFactor / dt;
 
-  m_angleSpeed = baseAngleSpeed + (m_angleSpeed - baseAngleSpeed) * rotateFriction;
-  m_angleSpeed -= m_angleSpeed * m_equipment.rotateFriction() * dt;
+  m_angleSpeed += angleAccel * rotateFriction;
+  m_angleSpeed -= m_angleSpeed * m_equipment.rotateFriction();
+
+  setAngle(m_angle + m_angleSpeed * dt);
 }
 
 double Car::changeValueToNeedWithDelta(double& value, double need, double delta) {

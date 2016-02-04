@@ -20,7 +20,6 @@ class Car {
   static const double sWheelTurnChange;
   static const double sEnginePowerChange;
 
-  static const double sWheelTurnFactor;
   static const double sAngleSpeedFactor;
 
  public:
