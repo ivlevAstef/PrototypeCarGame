@@ -12,7 +12,7 @@
 
 #include <map>
 #include "Common/Oxygine/PrimitiveDraw.h"
-#include "Common/UniqueTouchPositions.h"
+#include "Controllers/CarControls/ICarControl.h"
 #include "Models/Car.h"
 #include "Models/Map.h"
 #include "oxygine-framework.h"
@@ -25,19 +25,12 @@ class TestScene : public oxygine::Actor {
   void update(const oxygine::UpdateState& us) override;
 
  private:
-  void beginTouch(oxygine::TouchEvent* touch);
-  void moveTouch(oxygine::TouchEvent* touch);
-  void endTouch(oxygine::TouchEvent* touch);
-
-  void setEnginePower(const oxygine::Vector2& left, const oxygine::Vector2& right);
-  void setWheelTurn(const oxygine::Vector2& left, const oxygine::Vector2& right);
-
   void update(const double dt);
 
   void createTrack();
 
  private:
-  UniqueTouchPositions m_touchPositions;
+  Controllers::CarControlPointer m_carControl;
 
   oxygine::Resources m_resources;
   oxygine::spSprite m_viewCar;

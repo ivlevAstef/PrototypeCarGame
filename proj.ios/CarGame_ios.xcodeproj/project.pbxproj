@@ -22,6 +22,8 @@
 		1E839D002B2BA83FC83A695A /* images in Resources */ = {isa = PBXBuildFile; fileRef = 04FE4D4FB640E0DF92DFB865 /* images */; };
 		2DC477AC10D6C07B3FE008F6 /* entryPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 360377333740D8A2FD15BBE6 /* entryPoint.cpp */; };
 		3A631A475DE035FC53ADE5EA /* res.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7F3B12E3C9D554D9FE28101D /* res.xml */; };
+		845012B41C6471C6003EFF06 /* CarControlTouchScreenRudder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 845012B21C6471C6003EFF06 /* CarControlTouchScreenRudder.cpp */; };
+		845012B71C6474FD003EFF06 /* FabricCarControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 845012B51C6474FD003EFF06 /* FabricCarControls.cpp */; };
 		846E36E61C60BC600055AC8A /* RaceWayInterpolation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 846E36E11C60BC600055AC8A /* RaceWayInterpolation.cpp */; };
 		846E36ED1C61E67C0055AC8A /* PrimitiveDraw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 846E36EB1C61E67C0055AC8A /* PrimitiveDraw.cpp */; };
 		848FA60A1C59EE5300073A5E /* liboxygine_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 848FA5FD1C59E8F200073A5E /* liboxygine_ios.a */; };
@@ -95,6 +97,11 @@
 		360377333740D8A2FD15BBE6 /* entryPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = entryPoint.cpp; path = ../src/entryPoint.cpp; sourceTree = "<group>"; };
 		4DA100C319512824B7570663 /* fonts */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = fonts; path = ../data/fonts; sourceTree = "<group>"; };
 		7F3B12E3C9D554D9FE28101D /* res.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wtf; name = res.xml; path = ../data/res.xml; sourceTree = "<group>"; };
+		845012B11C646FF9003EFF06 /* ICarControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ICarControl.h; path = CarControls/ICarControl.h; sourceTree = "<group>"; };
+		845012B21C6471C6003EFF06 /* CarControlTouchScreenRudder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CarControlTouchScreenRudder.cpp; path = CarControls/CarControlTouchScreenRudder.cpp; sourceTree = "<group>"; };
+		845012B31C6471C6003EFF06 /* CarControlTouchScreenRudder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarControlTouchScreenRudder.h; path = CarControls/CarControlTouchScreenRudder.h; sourceTree = "<group>"; };
+		845012B51C6474FD003EFF06 /* FabricCarControls.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FabricCarControls.cpp; path = CarControls/FabricCarControls.cpp; sourceTree = "<group>"; };
+		845012B61C6474FD003EFF06 /* FabricCarControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FabricCarControls.h; path = CarControls/FabricCarControls.h; sourceTree = "<group>"; };
 		846E36E11C60BC600055AC8A /* RaceWayInterpolation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RaceWayInterpolation.cpp; sourceTree = "<group>"; };
 		846E36E21C60BC600055AC8A /* RaceWayInterpolation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaceWayInterpolation.h; sourceTree = "<group>"; };
 		846E36E31C60BC600055AC8A /* SIAFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIAFunctions.h; sourceTree = "<group>"; };
@@ -223,6 +230,18 @@
 			name = Sources;
 			sourceTree = "<group>";
 		};
+		845012B01C646FCE003EFF06 /* CarControls */ = {
+			isa = PBXGroup;
+			children = (
+				845012B11C646FF9003EFF06 /* ICarControl.h */,
+				845012B21C6471C6003EFF06 /* CarControlTouchScreenRudder.cpp */,
+				845012B31C6471C6003EFF06 /* CarControlTouchScreenRudder.h */,
+				845012B51C6474FD003EFF06 /* FabricCarControls.cpp */,
+				845012B61C6474FD003EFF06 /* FabricCarControls.h */,
+			);
+			name = CarControls;
+			sourceTree = "<group>";
+		};
 		846E36E01C60BC600055AC8A /* Math */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +331,7 @@
 		848FA62D1C5B17F000073A5E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				845012B01C646FCE003EFF06 /* CarControls */,
 				848FA62E1C5B17F000073A5E /* CoordinateConverter.h */,
 			);
 			name = Controllers;
@@ -416,10 +436,12 @@
 			files = (
 				848FA6241C5A339C00073A5E /* Car.cpp in Sources */,
 				2DC477AC10D6C07B3FE008F6 /* entryPoint.cpp in Sources */,
+				845012B41C6471C6003EFF06 /* CarControlTouchScreenRudder.cpp in Sources */,
 				848FA60E1C59F3DD00073A5E /* Application.cpp in Sources */,
 				846E36E61C60BC600055AC8A /* RaceWayInterpolation.cpp in Sources */,
 				848FA6311C5B75AE00073A5E /* UniqueTouchPositions.cpp in Sources */,
 				846E36ED1C61E67C0055AC8A /* PrimitiveDraw.cpp in Sources */,
+				845012B71C6474FD003EFF06 /* FabricCarControls.cpp in Sources */,
 				848FA61D1C5A119A00073A5E /* TestScene.cpp in Sources */,
 				848FA6111C59F49600073A5E /* ExampleMainActor.cpp in Sources */,
 				848FA62C1C5B15EA00073A5E /* Map.cpp in Sources */,
